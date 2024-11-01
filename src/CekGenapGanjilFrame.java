@@ -1,12 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author USER
- */
+import javax.swing.JOptionPane;
 public class CekGenapGanjilFrame extends javax.swing.JFrame {
 
     /**
@@ -31,7 +23,6 @@ public class CekGenapGanjilFrame extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         inputAngka = new javax.swing.JTextField();
         tombolCek = new javax.swing.JButton();
-        labelHasil = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,12 +60,6 @@ public class CekGenapGanjilFrame extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(20, 20, 20, 20);
         jPanel2.add(tombolCek, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(20, 20, 20, 20);
-        jPanel2.add(labelHasil, gridBagConstraints);
 
         jLabel2.setText("Masukkan Angka");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -86,19 +71,27 @@ public class CekGenapGanjilFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private boolean cekPrima(int number) {
+        if (number <= 1) return false;
+        for (int i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i == 0) return false;
+        }
+        return true;
+    }
 
+    
     private void tombolCekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolCekActionPerformed
         String teksInput = inputAngka.getText();
         try {
-            int angka = Integer.parseInt(teksInput); // Mengonversi teks input menjadi integer
+            int angka = Integer.parseInt(teksInput);
 
-            if (angka % 2 == 0) {
-                labelHasil.setText("Angka " + angka + " adalah Genap.");
-            } else {
-                labelHasil.setText("Angka " + angka + " adalah Ganjil.");
-            }
+            String hasil = "Angka " + angka + " adalah ";
+            hasil += (angka % 2 == 0) ? "Genap" : "Ganjil";
+            hasil += (cekPrima(angka)) ? " dan Prima." : " dan Bukan Prima.";
+
+            JOptionPane.showMessageDialog(this, hasil, "Hasil", JOptionPane.INFORMATION_MESSAGE);
         } catch (NumberFormatException e) {
-            labelHasil.setText("Input tidak valid! Masukkan angka saja.");
+            JOptionPane.showMessageDialog(this, "Input tidak valid! Masukkan angka saja.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_tombolCekActionPerformed
 
@@ -150,7 +143,6 @@ public class CekGenapGanjilFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel labelHasil;
     private javax.swing.JButton tombolCek;
     // End of variables declaration//GEN-END:variables
 }
