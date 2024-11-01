@@ -42,6 +42,12 @@ public class CekGenapGanjilFrame extends javax.swing.JFrame {
         getContentPane().add(jPanel1, java.awt.BorderLayout.NORTH);
 
         jPanel2.setLayout(new java.awt.GridBagLayout());
+
+        inputAngka.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                inputAngkaKeyTyped(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -95,6 +101,13 @@ public class CekGenapGanjilFrame extends javax.swing.JFrame {
             labelHasil.setText("Input tidak valid! Masukkan angka saja.");
         }
     }//GEN-LAST:event_tombolCekActionPerformed
+
+    private void inputAngkaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputAngkaKeyTyped
+        char karakter = evt.getKeyChar();
+        if (!Character.isDigit(karakter)) { // Memeriksa jika karakter bukan angka
+            evt.consume(); // Mengabaikan input selain angka
+        }
+    }//GEN-LAST:event_inputAngkaKeyTyped
 
     /**
      * @param args the command line arguments
