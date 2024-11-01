@@ -34,6 +34,11 @@ public class CekGenapGanjilFrame extends javax.swing.JFrame {
 
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
+        inputAngka.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                inputAngkaFocusGained(evt);
+            }
+        });
         inputAngka.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 inputAngkaKeyTyped(evt);
@@ -101,6 +106,10 @@ public class CekGenapGanjilFrame extends javax.swing.JFrame {
             evt.consume(); // Mengabaikan input selain angka
         }
     }//GEN-LAST:event_inputAngkaKeyTyped
+
+    private void inputAngkaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputAngkaFocusGained
+        inputAngka.setText("");
+    }//GEN-LAST:event_inputAngkaFocusGained
 
     /**
      * @param args the command line arguments
