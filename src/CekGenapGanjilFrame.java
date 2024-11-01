@@ -46,10 +46,16 @@ public class CekGenapGanjilFrame extends javax.swing.JFrame {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 50;
         gridBagConstraints.insets = new java.awt.Insets(20, 20, 20, 20);
         jPanel2.add(inputAngka, gridBagConstraints);
 
         tombolCek.setText("Cek");
+        tombolCek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tombolCekActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -74,6 +80,21 @@ public class CekGenapGanjilFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tombolCekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolCekActionPerformed
+        String teksInput = inputAngka.getText();
+        try {
+            int angka = Integer.parseInt(teksInput); // Mengonversi teks input menjadi integer
+
+            if (angka % 2 == 0) {
+                labelHasil.setText("Angka " + angka + " adalah Genap.");
+            } else {
+                labelHasil.setText("Angka " + angka + " adalah Ganjil.");
+            }
+        } catch (NumberFormatException e) {
+            labelHasil.setText("Input tidak valid! Masukkan angka saja.");
+        }
+    }//GEN-LAST:event_tombolCekActionPerformed
 
     /**
      * @param args the command line arguments
